@@ -1,0 +1,36 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation "com.android.tools.build:gradle:4.2.2"
+    implementation localGroovy()
+}
+
+gradlePlugin {
+    plugins {
+        FirstPlugn {
+            id = "cn.wx.myplugin.firstplugin"
+            implementationClass = "cn.wx.firstplugin.FirstPlugin"
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "cn.wx.myplugin"
+            artifactId = "firstplugin"
+            version = "1.0.0"
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir('plugins')
+        }
+    }
+}

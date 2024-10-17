@@ -1,0 +1,43 @@
+pluginManagement {
+    resolutionStrategy {
+        //使用useModule加入插件
+        eachPlugin {
+            println("namespace=${requested.id.namespace}")
+            if (requested.id.namespace == 'cn.wx.myplugin') {
+                useModule("cn.wx.myplugin:firstplugin:1.0.0")
+            }
+        }
+    }
+
+    repositories {
+        gradlePluginPortal()
+        mavenLocal()
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+    }
+}
+
+rootProject.name = "PluginTest"
+include ':app'
+include ':firstplugin'
