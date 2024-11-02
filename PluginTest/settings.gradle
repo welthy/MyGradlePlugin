@@ -41,3 +41,4 @@ dependencyResolutionManagement {
 rootProject.name = "PluginTest"
 include ':app'
 include ':firstplugin'
+include ':subLibrary'

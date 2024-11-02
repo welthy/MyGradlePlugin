@@ -10,6 +10,7 @@ class FirstPlugin implements Plugin<Project> {
         project.getTasks().register("firstplugin", task -> {
             task.doLast(s -> {
                 System.out.println("this is my first plugin");
+                System.out.println("FirstPlugin buildFile ==> "+project.getBuildFile().getAbsolutePath());
             });
         });
     }
