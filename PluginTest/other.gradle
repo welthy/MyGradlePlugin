@@ -1,0 +1,9 @@
+void test() {
+    println("other test")
+}
+
+task other {
+    doLast {
+        println("other task")
+    }
+}

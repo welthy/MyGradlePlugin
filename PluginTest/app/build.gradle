@@ -47,6 +47,28 @@ android {
 //    }
 }
 
+sourceSets {
+    main {
+        Set<File> files = java.sourceDirectories.getFiles();
+        for (File file :files) {
+            println("file => " + file.name)
+        }
+        java.srcDirs += ["src/main/java"]
+    }
+}
+
+
+task printSourceSetInformation() {
+    doLast {
+        sourceSets.each { srcSet ->
+            println "[" + srcSet.name + "]"
+            print "-->Source directories: " + srcSet.allJava.srcDirs + "\n"
+            print "-->Output directories: " + srcSet.output.classesDirs.files + "\n"
+            println ""
+        }
+    }
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'

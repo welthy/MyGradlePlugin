@@ -1,12 +1,25 @@
+
 plugins {
     id 'java-gradle-plugin'
     id 'maven-publish'
+    id 'groovy'
 }
+
+apply from: '../other.gradle'
 
 dependencies {
     implementation gradleApi()
     implementation "com.android.tools.build:gradle:4.2.2"
     implementation localGroovy()
+    implementation 'org.javassist:javassist:3.27.0-GA'
+}
+
+sourceSets {
+    main {
+        java {
+            "src/main/java"
+        }
+    }
 }
 
 gradlePlugin {
@@ -34,3 +47,5 @@ publishing {
         }
     }
 }
+
+
